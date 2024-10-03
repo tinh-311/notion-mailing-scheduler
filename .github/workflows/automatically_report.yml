@@ -1,0 +1,35 @@
+name: Send vocabularies by scheduled times
+on:
+  schedule:
+    - cron: "0,30 22-23 * * *" # Original (22-23 UTC means 5-6 AM Vietnam)
+    - cron: "0,30 0-13 * * *" # New for 5 AM to 8 PM Vietnam Time (UTC+7)
+  workflow_dispatch:
+
+jobs:
+  run-the-job:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' || github.event_name == 'workflow_dispatch'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Check Node.js version
+        run: node -v
+
+      - name: Setup dependencies
+        run: npm install
+
+      - name: Sending email
+        env:
+          SENDING_EMAIL: ${{ secrets.SENDING_EMAIL }}
+          SENDING_PASSWORD: ${{ secrets.SENDING_PASSWORD }}
+          DESTINATION_EMAIL: ${{ secrets.DESTINATION_EMAIL }}
+          NOTION_DB_ID: ${{ secrets.NOTION_DB_ID }}
+          NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
+        run: npm start

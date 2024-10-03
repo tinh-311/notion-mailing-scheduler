@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🌟 Vocabulary Learning 🌟</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f0f4f8;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 30px auto;
+      background-color: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+    }
+
+    .header {
+      text-align: center;
+      background-color: #3498db;
+      /* Bright blue color */
+      color: #ffffff;
+      padding: 25px;
+      border-radius: 20px 20px 0 0;
+    }
+
+    .header h1 {
+      font-size: 1.5rem;
+      margin: 0;
+      font-weight: bold;
+    }
+
+    .section-title {
+      font-size: 1rem;
+      color: #3d3d3d;
+      margin: 30px 0 20px;
+      text-align: center;
+      text-transform: uppercase;
+      border-bottom: 3px solid #3498db;
+      padding-bottom: 10px;
+    }
+
+    .vocabulary-card {
+      background-color: #f7f9fa;
+      border-radius: 15px;
+      padding: 25px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+      font-size: 1.1rem;
+    }
+
+    .vocabulary-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .highlight {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #e84393;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .part-of-speech {
+      font-weight: bold;
+      color: #4a69bd;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .pronunciation {
+      font-style: italic;
+      color: #7d7d7d;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .example,
+    .mean,
+    .example-mean {
+      margin-top: 5px;
+      font-size: 0.9rem;
+      color: #333;
+      padding-left: 5px;
+    }
+
+    .mean {
+      font-style: italic;
+      font-size: 1rem;
+      color: #d63031;
+    }
+
+    .motivation {
+      font-size: 1rem;
+      color: #0984e3;
+      text-align: center;
+      margin: 25px 0;
+      padding: 15px;
+      border: 2px solid #0984e3;
+      border-radius: 15px;
+      background-color: #d1ecf4;
+    }
+
+    .contact {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #3498db;
+      margin: 20px 0;
+    }
+
+    .footer {
+      margin-top: 30px;
+      text-align: center;
+      color: #7d7d7d;
+      font-size: 0.85rem;
+    }
+
+    .footer a {
+      color: #3498db;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    .learning-level {
+      font-size: 1rem;
+      color: #0984e3;
+      text-align: right;
+    }
+
+    .result {
+      display: inline-flex;
+      margin-top: -5px !important;
+    }
+
+    @media (max-width: 600px) {
+      .vocabulary-card {
+        width: 100vw;
+      }
+
+      .header h1 {
+        font-size: 1.6rem;
+      }
+
+      .highlight {
+        font-size: 2.2rem;
+      }
+
+      .section-title {
+        font-size: 1.2rem;
+      }
+
+      .example,
+      .example-mean {
+        font-size: 1.5rem;
+      }
+
+      .mean {
+        font-size: 1.4rem;
+      }
+
+      .motivation {
+        font-size: 1.5rem;
+      }
+
+      .contact {
+        font-size: 1.3rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🚀 Vocabulary Voyage</h1>
+    </div>
+
+    <h2 class="section-title">Vocabulary Cards</h2>
+    <div class="vocabulary-section">
+      {{#each vocabularies}}
+      <div class="vocabulary-card">
+        <p class="highlight">{{name}}</p>
+        <p class="part-of-speech">{{partOfSpeech.name}}</p>
+        <p class="pronunciation">{{#if pronunciation}} [{{pronunciation}}] {{else}} _none_ {{/if}}</p>
+        <p class="example"><strong>✏ Example:</strong> {{example}}</p>
+        <p class="example-mean"><strong> ➡ </strong> {{meanOfExample}}</p>
+        <hr style="border-top: 1px solid #d3d3d3; margin: 10px 0;">
+        <p class="mean"><strong>💡 Meaning:</strong> {{meaning}}</p>
+        <p class="learning-level"><strong><span class="result">📊</span> {{result.name}}</strong></p>
+      </div>
+      {{/each}}
+    </div>
+
+    <div class="motivation">Keep going, you're doing great! 🌈</div>
+
+    <div class="contact">
+      <p>Need assistance? Reach us on <a href="https://www.facebook.com/ntt.tinh311" target="_blank">Facebook</a>!</p>
+    </div>
+
+    <div class="footer">
+      <p>Wishing you a successful learning journey!</p>
+      <p>Designed by <a href="https://www.facebook.com/ntt.tinh311">@Timmo - Nguyễn Trung Tình</a></p>
+    </div>
+  </div>
+</body>
+
+</html>
