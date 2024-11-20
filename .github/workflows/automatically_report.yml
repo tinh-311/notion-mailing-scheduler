@@ -1,7 +1,7 @@
 name: Send vocabularies by scheduled times
 on:
   schedule:
-     - cron: '0 22-23,0-15 * * *' # Runs between 5 AM and 10 PM Vietnam time (UTC+7)
+     #- cron: '0 22-23,0-15 * * *' # Runs between 5 AM and 10 PM Vietnam time (UTC+7)
   workflow_dispatch:
 
 jobs:
